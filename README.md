@@ -14,11 +14,12 @@ See also an [example of a full stack app using Express](https://github.com/AdVg/
 
 ## How does work the flow ?
 
-In your terminal :
-
-  1. Work on your assets in realtime
-
-    Code your *assets* files and it will automatically build them in *dist* directory.
+  - **css files** are built with *node-sass* and *autoprefixer* then compressed. You could use *Stylus* or *less*.
+  - **js files** are tested with *jshint* then built with *browserify* and minified with *uglifyjs*. You could add *Babel* to deal with ES6 great features.
+  - **html files** are built with *pug* engine (ex *jade*). Add your favorite template engine or never use one.
+  - **tests** are made using *Mocha* and a pretest is done with *jshint*.
+  
+  1. **Work on your assets in realtime**
 
     `$ npm run dev`
 
@@ -29,12 +30,7 @@ In your terminal :
       - run tests,
       - be built (not all rebuilt at the same time so if a *scss* file changes, only watcher for *scss* is activated).
 
-    - **css files** are built with *node-sass* and *autoprefixer* then compressed. You could use *Stylus* or *less*.
-    - **js files** are tested with *jshint* then built with *browserify* and minified with *uglifyjs*. You could add *Babel* to deal with ES6 great features.
-    - **html files** are built with *pug* engine (ex *jade*). Add your favorite template engine or never use one.
-    - **tests** are made using *Mocha* and a pretest is done with *jshint*.
-
-  2. Another way to work
+  2. **Another way to work**
 
     - Each modification in your assets is only watched (test and build) with no live reload :
 
@@ -44,7 +40,7 @@ In your terminal :
 
       `$ npm run build:all`
 
-  3. Environment variables
+  3. **Environment variables**
 
     At the root directory, *.npmrc* file variables are in name=value format and can be used to load environment variables in *package.json* but as you could see, it's a bit repetitive :
 
