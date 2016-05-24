@@ -1,0 +1,67 @@
+{
+  "name": "npm-flower",
+  "version": "0.1.0",
+  "description": "A simple foundation to use npm script as build tool !",
+  "author": "Adrien Valcke <a.valcke@free.fr>",
+  "scripts": {
+    "clean": "rimraf $npm_config_DIST_CSS/* && rimraf $npm_config_DIST_JS/*",
+
+    "prebuild": "npm run clean -s",
+    "build": "npm run build:css -s && npm run build:js -s && npm run build:pug -s",
+    "build:all": "npm run test && npm run build && npm run build:img",
+    "build:css": "node-sass --output-style compressed assets/sass/app.scss dist/css/app.css && postcss -u autoprefixer -b 'last 2 versions' -r dist/css/app.css",
+    "build:js": "browserify -e assets/js/app.js -d | uglifyjs > dist/js/app.js",
+    "build:pug": "pug -s assets/pug/index.pug -o dist/",
+    "build:img": "rimraf dist/img/* && imagemin assets/img dist/img -p",
+
+    "lint": "jshint assets/js/*.js",
+    "pretest": "npm run lint -s",
+    "test": "mocha test/",
+
+    "watch": "parallelshell 'npm run watch:test -s' 'npm run watch:build -s'",
+    "watch:test": "npm run test -- -w",
+    "watch:build": "nodemon -q -w assets/ --ext '.' --exec 'npm run build'",
+
+    "open:dev": "opener http://localhost:9090 dist/",
+
+    "serve": "http-server -p 9090 dist/",
+    "live-reload": "live-reload --port 9091 dist/",
+
+    "dev": "npm run open:dev && parallelshell 'npm run live-reload' 'npm run serve' 'npm run watch'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AdVg/npm-flower.git"
+  },
+  "keywords": [
+    "npm",
+    "flower",
+    "build",
+    "tool",
+    "script"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "~6.3.6",
+    "browserify": "~13.0.0",
+    "http-server": "~0.9.0",
+    "imagemin-cli": "~2.1.0",
+    "jshint": "~2.9.2",
+    "live-reload": "~1.1.0",
+    "mocha": "~2.4.5",
+    "node-sass": "~3.7.0",
+    "nodemon": "~1.9.2",
+    "opener": "~1.4.1",
+    "parallelshell": "~2.0.0",
+    "postcss-cli": "~2.5.2",
+    "pug": "~2.0.0-alpha8",
+    "pug-cli": "~1.0.0-alpha5",
+    "rimraf": "~2.5.2",
+    "uglify-js": "~2.6.2",
+    "watch": "~0.18.0"
+  },
+  "preferGlobal": false,
+  "private": false,
+  "analyze": false,
+  "license": "MIT"
+}
