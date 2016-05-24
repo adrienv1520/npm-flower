@@ -54,7 +54,6 @@
     "opener": "~1.4.1",
     "parallelshell": "~2.0.0",
     "postcss-cli": "~2.5.2",
-    "pug": "~2.0.0-alpha8",
     "pug-cli": "~1.0.0-alpha5",
     "rimraf": "~2.5.2",
     "uglify-js": "~2.6.2",
