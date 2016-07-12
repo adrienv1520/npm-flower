@@ -4,21 +4,22 @@
 
 A simple foundation to use npm script as build tool !
 
-This workflow will build html, css, js and html in a *dist* directory ready to use. Project config variables in *.npmrc* file are used in *package.json* file.
+This workflow will build html, css, js and image files in a *dist* directory ready to use.
 
-The *package.json* file contains all the configuration needed. *assets* and *dist* folders can No bower, no Gulp/Grunt or other task runners, everything is done using the awesome npm.
+The *package.json* file contains all the configuration needed. No bower, no Gulp/Grunt or other task runners, everything is done using the awesome npm. *.npmrc* file is used to load configuration variables in *package.json* file.
 
 See [npm burgeon](https://github.com/AdVg/npm-burgeon) to deploy a real static app with best practices, test, security and deployment.
 
-See also an [example of a full stack app using Express](https://github.com/AdVg/express-hero) and that integrates npm flower and [Denvar](https://github.com/AdVg/denvar) (a module and command line tool that i've made to manage environment variables in development and export them in production).
+See also an [example of a full stack app using Express](https://github.com/AdVg/express-hero) that integrates npm flower and [Denvar](https://github.com/AdVg/denvar) (a module and command line tool to manage environment variables in development and export them in production).
 
 ## How does work the flow ?
 
+  - **html files** are built with *pug* engine (ex *jade*). Add your favorite template engine or never use one.
   - **css files** are built with *node-sass* and *autoprefixer* then compressed. You could use *Stylus* or *less*.
   - **js files** are tested with *jshint* then built with *browserify* and minified with *uglifyjs*. You could add *Babel* to deal with ES6 great features.
-  - **html files** are built with *pug* engine (ex *jade*). Add your favorite template engine or never use one.
+  - **image files** are built with *imagemin*.
   - **tests** are made using *Mocha* and a pretest is done with *jshint*.
-  
+
   1. **Work on your assets in realtime**
 
     `$ npm run dev`
@@ -89,7 +90,7 @@ See also an [example of a full stack app using Express](https://github.com/AdVg/
     ```
 
 **Note** :
-  - Commands order is important. Each command is chained with the next one and if one fails the script running exits. So if test script fails because something wrong happened in a *javascript* file for example, your site won't be deployed.
+  - Commands order is important. Each command is chained with the next one and if one fails the script running exits. So if test script fails because something wrong happened in a *javascript* file for example, your assets won't be built.
   - Use *-s* flag after commands to make them silent :
 
     `$ npm run sass -s`
