@@ -17,7 +17,7 @@ See also an [example of a full stack app using Express](https://github.com/AdVg/
   - **html files** are built with *pug* engine (ex *jade*). Add your favorite template engine or never use one.
   - **css files** are built with *node-sass* and *autoprefixer* then compressed. You could use *Stylus* or *less*.
   - **js files** are tested with *jshint* then built with *browserify* and minified with *uglifyjs*. You could add *Babel* to deal with ES6 great features.
-  - **image files** are built with *imagemin*.
+  - **images** optimizations are done with *imagemin*.
   - **tests** are made using *Mocha* and a pretest is done with *jshint*.
 
   1. **Work on your assets in realtime**
